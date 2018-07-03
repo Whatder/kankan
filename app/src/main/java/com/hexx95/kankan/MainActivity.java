@@ -1,13 +1,17 @@
 package com.hexx95.kankan;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import com.hexx95.kankan.base.BaseActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayoutID() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public StatusStyle setStatusStyle() {
+        return StatusStyle.DARK;
     }
 }
