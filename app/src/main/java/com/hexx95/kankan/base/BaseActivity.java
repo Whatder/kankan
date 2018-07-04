@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 
 import com.hexx95.kankan.R;
 
@@ -36,10 +37,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getLayoutID());
         ButterKnife.bind(this);
         getStatusStyle();
+        initView();
     }
 
     protected abstract int getLayoutID();
 
+    protected void initView() {
+
+    }
 
     public StatusStyle setStatusStyle() {
         return StatusStyle.FULL;
@@ -94,5 +99,15 @@ public abstract class BaseActivity extends AppCompatActivity {
             setSupportActionBar(toolbar);
             toolbar.setFitsSystemWindows(true);
         }
+    }
+
+    protected void setBlackFontInStatus() {
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        window.setStatusBarColor(Color.TRANSPARENT);
+    }
+
+    protected void setWhiteFontInStatus() {
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        window.setStatusBarColor(Color.TRANSPARENT);
     }
 }
